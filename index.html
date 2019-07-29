@@ -65,9 +65,13 @@
     <article id="post-center-SQL中in和exist的区别-center" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/26/center-SQL中in和exist的区别-center/" class="article-date">
-  <time datetime="2019-07-26T11:25:51.000Z" itemprop="datePublished">2019-07-26</time>
+  <time datetime="2019-07-26T11:25:00.000Z" itemprop="datePublished">2019-07-26</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -91,15 +95,16 @@
 <li>当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.</li>
 </ul>
 </blockquote>
-<h4 id="2-原理"><a href="#2-原理" class="headerlink" title="2. 原理:"></a>2. 原理:</h4><h5 id="1-in"><a href="#1-in" class="headerlink" title="1. in()"></a>1. in()</h5><p><code>select * from A where id in(select id from B)</code><br>等价于</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT id FROM B -----&gt;先执行in中的查询</span><br><span class="line">SELECT *  FROM A  WHERE A.id = B.id</span><br></pre></td></tr></table></figure>
+<h4 id="2-原理"><a href="#2-原理" class="headerlink" title="2. 原理:"></a>2. 原理:</h4><h5 id="1-in"><a href="#1-in" class="headerlink" title="1. in()"></a>1. in()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * from A where id in(select id from B)</span><br><span class="line">等价于</span><br><span class="line">SELECT id FROM B -----&gt;先执行in中的查询</span><br><span class="line">SELECT *  FROM A  WHERE A.id = B.id</span><br></pre></td></tr></table></figure>
 
 <ol>
-<li>执行流程<br>以上查询使用了in语句,in()<strong>只执行一次</strong>,它@1查出B表中的所有id字段并<strong>缓存</strong>起来.之后,@2检查A表的id是否与B表中的id相等,如果相等则将A表的记录加入结果集中,直到遍历完A表的所有记录.<br>类似流程.<br>每一个A的结果,都会遍历一次B的所有数据  </li>
+<li><p>执行流程  </p>
+<p>以上查询使用了in语句,in()<strong>只执行一次</strong>,它@1查出B表中的所有id字段并<strong>缓存</strong>起来.之后,@2检查A表的id是否与B表中的id相等,如果相等则将A表的记录加入结果集中,直到遍历完A表的所有记录.<br>类似流程.<br>每一个A的结果,都会遍历一次B的所有数据  </p>
+</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">List resultSet=[];</span><br><span class="line">Array A=(select * from A);</span><br><span class="line">Array B=(select id from B);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++) &#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B.length;j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(A[i].id==B[j].id) &#123;</span><br><span class="line">         resultSet.add(A[i]);</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> resultSet;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="number">1</span>、A表中有<span class="number">100</span>条记录，B表中有<span class="number">1000</span>条记录，那么最多可能遍历<span class="number">100</span>*<span class="number">1000</span>次，效率很差</span><br><span class="line"></span><br><span class="line"> <span class="number">2</span>、A表中有<span class="number">1000</span>条记录，B表中有<span class="number">100</span>条记录，那么最多可遍历<span class="number">1000</span>*<span class="number">100</span>此，内循环次数减少，效率大大提升</span><br><span class="line"> 看似遍历数据次数相同,但是由于遍历B的更多的是**无用遍历**,B结果集越大,命中率就越低,所以减少内循环次数可以提高效率</span><br><span class="line"></span><br><span class="line">#####2. exist()</span><br><span class="line"> `SELECT  字段 FROM  table WHERE EXISTS（subquery）;`</span><br><span class="line"> `SELECT * <span class="function">FROM A WHERE <span class="title">EXISTS</span><span class="params">(SELECT <span class="number">1</span> FROM B WHERE B.id  = A.id)</span></span>;`</span><br><span class="line"> 等价于</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">List resultSet=[];</span><br><span class="line">Array A=(select * from A);</span><br><span class="line">Array B=(select id from B);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++) &#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B.length;j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(A[i].id==B[j].id) &#123;</span><br><span class="line">         resultSet.add(A[i]);</span><br><span class="line">         <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> resultSet;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="number">1</span>、A表中有<span class="number">100</span>条记录，B表中有<span class="number">1000</span>条记录，那么最多可能遍历<span class="number">100</span>*<span class="number">1000</span>次，效率很差</span><br><span class="line"></span><br><span class="line"> <span class="number">2</span>、A表中有<span class="number">1000</span>条记录，B表中有<span class="number">100</span>条记录，那么最多可遍历<span class="number">1000</span>*<span class="number">100</span>此，内循环次数减少，效率大大提升</span><br><span class="line"> 看似遍历数据次数相同,但是由于遍历B的更多的是**无用遍历**,B结果集越大,命中率就越低,所以减少内循环次数可以提高效率</span><br><span class="line"></span><br><span class="line">##### 2. exist()</span><br></pre></td></tr></table></figure>
 
-<p>SELECT * FROM A;<br>SELECT I FROM B WHERE B.id = A.id;<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">执行流程:</span><br><span class="line">EXISTS()查询会执行SELECT * FROM A查询，执行A.length次，并不会将EXISTS()查询结果结果进行缓存，因为EXISTS()查询返回一个布尔值true或flase，它只在乎EXISTS()的查询中是否有记录，与具体的结果集无关。</span><br><span class="line">EXISTS()查询是将主查询的结果集放到子查询中做验证，根据验证结果是true或false来决定主查询数据结果是否得以保存。</span><br><span class="line">&gt;如果A的查询结果在B查询中返回了true,则保存结果集</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">List resultSet=[];</span><br><span class="line">Array A=(select * from A)</span><br><span class="line"></span><br><span class="line">for(int i=0;i&lt;A.length;i++) &#123;</span><br><span class="line">   if(exists(A[i].id) &#123;    //执行select 1 from B b where b.id=a.id是否有记录返回</span><br><span class="line">       resultSet.add(A[i]);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">return resultSet;</span><br></pre></td></tr></table></figure></p>
+<p> SELECT  字段 FROM  table WHERE EXISTS（subquery）;<br> SELECT * FROM A WHERE EXISTS(SELECT 1 FROM B WHERE B.id  = A.id);<br> 等价于<br> SELECT * FROM A;<br> SELECT I FROM B WHERE B.id = A.id;<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">执行流程:</span><br><span class="line">EXISTS()查询会执行SELECT * FROM A查询，执行A.length次，并不会将EXISTS()查询结果结果进行缓存，因为EXISTS()查询返回一个布尔值true或flase，它只在乎EXISTS()的查询中是否有记录，与具体的结果集无关。</span><br><span class="line">EXISTS()查询是将主查询的结果集放到子查询中做验证，根据验证结果是true或false来决定主查询数据结果是否得以保存。</span><br><span class="line">&gt;如果A的查询结果在B查询中返回了true,则保存结果集</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">List resultSet=[];</span><br><span class="line">Array A=(select * from A)</span><br><span class="line"></span><br><span class="line">for(int i=0;i&lt;A.length;i++) &#123;</span><br><span class="line">   if(exists(A[i].id) &#123;    //执行select 1 from B b where b.id=a.id是否有记录返回</span><br><span class="line">       resultSet.add(A[i]);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">return resultSet;</span><br></pre></td></tr></table></figure></p>
 <p>每有一条A数据都会执行一次Exist()</p>
 <blockquote>
 <p>如:A表有10000条记录,B表有1000000条记录,那么exists()会执行10000次去判断A表中的id是否与B表中的id相等.<br>如:A表有10000条记录,B表有100000000条记录,那么exists()还是执行10000次,因为它只执行A.length次,可见B表数据越多,越适合exists()发挥效果.  </p>
@@ -109,9 +114,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/26/center-SQL中in和exist的区别-center/" data-id="cjyo8to230000tgvttkc5d6lc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/26/center-SQL中in和exist的区别-center/" data-id="cjyo93wqk0000mcvtx848bme3" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
+
     </footer>
   </div>
   
@@ -126,12 +133,33 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/sql/" style="font-size: 10px;">sql</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
