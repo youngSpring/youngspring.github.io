@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="youngspring">
 <meta property="og:description" content="SQL中in和exist的区别1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-07-30T08:16:51.244Z">
+<meta property="og:updated_time" content="2019-07-30T08:23:28.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL中in和exist的区别">
 <meta name="twitter:description" content="SQL中in和exist的区别1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查">
@@ -101,7 +101,8 @@
 <ul>
 <li>执行流程<br>以上查询使用了in语句,in()<strong>只执行一次</strong>,它@1查出B表中的所有id字段并<strong>缓存</strong>起来.之后,@2检查A表的id是否与B表中的id相等,如果相等则将A表的记录加入结果集中,直到遍历完A表的所有记录.<br>类似流程.<br>每一个A的结果,都会遍历一次B的所有数据  </li>
 </ul>
-<pre><code class="java">List resultSet=[];
+<pre><code class="java"><span class="comment">//查询过程类似于下边的代码</span>
+List resultSet=[];
 Array A=(select * from A);
 Array B=(select id from B);
 
@@ -134,7 +135,8 @@ Array B=(select id from B);
 </blockquote>
 </li>
 </ul>
-<pre><code class="java">List resultSet=[];
+<pre><code class="java"><span class="comment">//查询过程类似于下边的代码</span>
+List resultSet=[];
 Array A=(select * from A)
 
 <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++) {
