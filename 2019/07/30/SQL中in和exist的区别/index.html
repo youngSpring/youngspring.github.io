@@ -5,15 +5,20 @@
   
 
   
-  <title>youngspring</title>
+  <title>SQL中in和exist的区别 | youngspring</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="youngspring">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="SQL中in和exist的区别1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL中in和exist的区别">
+<meta property="og:url" content="http://yoursite.com/2019/07/30/SQL中in和exist的区别/index.html">
 <meta property="og:site_name" content="youngspring">
+<meta property="og:description" content="SQL中in和exist的区别1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-07-30T08:16:51.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="youngspring">
+<meta name="twitter:title" content="SQL中in和exist的区别">
+<meta name="twitter:description" content="SQL中in和exist的区别1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查">
   
     <link rel="alternate" href="/atom.xml" title="youngspring" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-SQL中in和exist的区别" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SQL中in和exist的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/30/SQL中in和exist的区别/" class="article-date">
   <time datetime="2019-07-30T08:01:00.000Z" itemprop="datePublished">2019-07-30</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/30/SQL中in和exist的区别/">SQL中in和exist的区别</a>
+    <h1 class="article-title" itemprop="name">
+      SQL中in和exist的区别
     </h1>
   
 
@@ -158,11 +161,9 @@ Array A=(select * from A)
     </footer>
   </div>
   
-</article>
-
-
+    
   
-
+</article>
 
 </section>
         
