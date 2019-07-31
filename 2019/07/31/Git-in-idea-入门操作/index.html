@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="git ,idea,">
 
 
 
@@ -90,16 +90,40 @@
 
 
 
-<meta name="description" content="知识共享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="youngspring">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="V1.0  by  youngspring    一. 概念解释 概念  本地仓库（Local）：此次修改已经被提交，处于本地机器。但是其他同事还访问不到远程仓库 (Remote)：代码在服务器上放置的位置，其他有权限的同事可以通过pull获取到带origin的就是远程的Commit:提交到本地仓库,还在你的机器上Push:将本地仓库内容提交到远程仓库，这样大家都就可以访问到了。合并代码：指的是将">
+<meta name="keywords" content="git ,idea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git in idea 入门操作">
+<meta property="og:url" content="http://yoursite.com/2019/07/31/Git-in-idea-入门操作/index.html">
 <meta property="og:site_name" content="youngspring">
-<meta property="og:description" content="知识共享">
+<meta property="og:description" content="V1.0  by  youngspring    一. 概念解释 概念  本地仓库（Local）：此次修改已经被提交，处于本地机器。但是其他同事还访问不到远程仓库 (Remote)：代码在服务器上放置的位置，其他有权限的同事可以通过pull获取到带origin的就是远程的Commit:提交到本地仓库,还在你的机器上Push:将本地仓库内容提交到远程仓库，这样大家都就可以访问到了。合并代码：指的是将">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/local_and_remote_branch.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/code_version_code.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/codeStatus.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/addFiles.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/function_of_buttons.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/structure_of_docu.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/gitIgnore.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/whoCommitCode.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/whoChangedFile.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/whichBranchTheCodeIn.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/merge.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/conflict.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/solveConfilct.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/stash1.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/stash2.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/cherry-pick.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/reset.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/push.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/noChange.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/status.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/shortCut.png">
+<meta property="og:updated_time" content="2019-07-31T09:15:45.811Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="youngspring">
-<meta name="twitter:description" content="知识共享">
+<meta name="twitter:title" content="Git in idea 入门操作">
+<meta name="twitter:description" content="V1.0  by  youngspring    一. 概念解释 概念  本地仓库（Local）：此次修改已经被提交，处于本地机器。但是其他同事还访问不到远程仓库 (Remote)：代码在服务器上放置的位置，其他有权限的同事可以通过pull获取到带origin的就是远程的Commit:提交到本地仓库,还在你的机器上Push:将本地仓库内容提交到远程仓库，这样大家都就可以访问到了。合并代码：指的是将">
+<meta name="twitter:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/local_and_remote_branch.png">
 
 
 
@@ -129,13 +153,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/31/Git-in-idea-入门操作/">
 
 
 
 
 
-  <title>youngspring</title>
+  <title>Git in idea 入门操作 | youngspring</title>
   
 
 
@@ -154,8 +178,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -228,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -260,9 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/31/Git-in-idea-入门操作/" itemprop="url">Git in idea 入门操作</a></h1>
+          <h1 class="post-title" itemprop="name headline">Git in idea 入门操作</h1>
         
 
         <div class="post-meta">
@@ -334,9 +355,7 @@
       
 
       
-        
-          
-            <center>V1.0  by  <font face="黑体" size="4">youngspring</font></center>  
+        <center>V1.0  by  <font face="黑体" size="4">youngspring</font></center>  
 
 <h3 id="一-概念解释"><a href="#一-概念解释" class="headerlink" title="一. 概念解释"></a>一. 概念解释</h3><ol>
 <li><strong>概念</strong></li>
@@ -392,14 +411,20 @@
 <p>2.快捷键<br> 拉取代码的快捷键设置<br>File–&gt;Settings–&gt;Keymap–&gt;Main menu–&gt;VCS–&gt;UPdate Project<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/shortCut.png" alt="short Cut">  </p>
 <h3 id="四-附录"><a href="#四-附录" class="headerlink" title="四. 附录"></a>四. 附录</h3><p>一个很好的学习git的网站：<br><a href="https://learngitbranching.js.org/?demo" target="_blank" rel="noopener">https://learngitbranching.js.org/?demo</a></p>
 
-          
-        
       
     </div>
     
     
     
 
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/weChat.jpg" alt="yuepeng.han wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎关注我的微信公众号</div>
+</div>
+
+      </div>
     
 
     
@@ -408,197 +433,38 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/SQL中in和exist的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yuepeng.han">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/headerImg.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="youngspring">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/30/SQL中in和exist的区别/" itemprop="url">SQL中in和exist的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-30T16:01:00+08:00">
-                2019-07-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/git/" rel="tag"># git </a>
           
-            
+            <a href="/tags/idea/" rel="tag"># idea</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-结论"><a href="#1-结论" class="headerlink" title="1. 结论"></a>1. 结论</h3><blockquote>
-<ul>
-<li>in()适合B表比A表数据小的情况</li>
-<li>exists()适合B表比A表数据大的情况</li>
-<li>当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.</li>
-</ul>
-</blockquote>
-<h3 id="2-原理"><a href="#2-原理" class="headerlink" title="2. 原理:"></a>2. 原理:</h3><h4 id="1-in"><a href="#1-in" class="headerlink" title="1. in()"></a>1. in()</h4><pre><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> A <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">in</span>(<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> B)
-等价于
-<span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">FROM</span> B <span class="comment">-----&gt;先执行in中的查询</span>
-<span class="keyword">SELECT</span> *  <span class="keyword">FROM</span> A  <span class="keyword">WHERE</span> A.id = B.id</code></pre>
-<ul>
-<li>执行流程<br>以上查询使用了in语句,in()<strong>只执行一次</strong>,它@1查出B表中的所有id字段并<strong>缓存</strong>起来.之后,@2检查A表的id是否与B表中的id相等,如果相等则将A表的记录加入结果集中,直到遍历完A表的所有记录.<br>类似流程.<br>每一个A的结果,都会遍历一次B的所有数据  </li>
-</ul>
-<pre><code class="java"><span class="comment">//查询过程类似于下边的代码</span>
-List resultSet=[];
-Array A=(select * from A);
-Array B=(select id from B);
-
-<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++) {
-   <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B.length;j++) {
-      <span class="keyword">if</span>(A[i].id==B[j].id) {
-         resultSet.add(A[i]);
-         <span class="keyword">break</span>;
-      }
-   }
-}
-<span class="keyword">return</span> resultSet;  </code></pre>
-<ol>
-<li><p>A表中有100条记录，B表中有1000条记录，那么最多可能遍历100*1000次，效率很差</p>
-</li>
-<li><p>A表中有1000条记录，B表中有100条记录，那么最多可遍历1000*100此，内循环次数减少，效率大大提升</p>
-<blockquote>
-<p>看似遍历数据次数相同,但是由于遍历B的更多的是<strong>无用遍历</strong>,B结果集越大,命中率就越低,所以减少内循环次数可以提高效率  </p>
-</blockquote>
-</li>
-</ol>
-<h4 id="2-exist"><a href="#2-exist" class="headerlink" title="2. exist()"></a>2. exist()</h4><pre><code class="sql"><span class="keyword">SELECT</span>  字段 <span class="keyword">FROM</span>  <span class="keyword">table</span> <span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>（subquery）;
-<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> A <span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> B <span class="keyword">WHERE</span> B.id  = A.id);
- 等价于
-<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> A;
-<span class="keyword">SELECT</span> I <span class="keyword">FROM</span> B <span class="keyword">WHERE</span> B.id = A.id;</code></pre>
-<ul>
-<li>执行流程:<br>EXISTS()查询会执行SELECT * FROM A查询，执行A.length次，并不会将EXISTS()查询结果结果进行缓存，因为EXISTS()查询返回一个布尔值true或flase，它只在乎EXISTS()的查询中是否有记录，与具体的结果集无关。<br>EXISTS()查询是将主查询的结果集放到子查询中做验证，根据验证结果是true或false来决定主查询数据结果是否得以保存。<blockquote>
-<p>如果A的查询结果在B查询中返回了true,则保存结果集  </p>
-</blockquote>
-</li>
-</ul>
-<pre><code class="java"><span class="comment">//查询过程类似于下边的代码</span>
-List resultSet=[];
-Array A=(select * from A)
-
-<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++) {
-   <span class="keyword">if</span>(exists(A[i].id) {    <span class="comment">//执行select 1 from B b where b.id=a.id是否有记录返回</span>
-       resultSet.add(A[i]);
-   }
-}
-<span class="keyword">return</span> resultSet;</code></pre>
-<p>每有一条A数据都会执行一次Exist()</p>
-<ol>
-<li>如:A表有10000条记录,B表有1000000条记录,那么exists()会执行10000次去判断A表中的id是否与B表中的id相等.</li>
-<li>A表有10000条记录,B表有100000000条记录,那么exists()还是执行10000次,因为它只执行A.length次,可见B表数据越多,越适合exists()发挥效果.  </li>
-<li>A表有10000条记录,B表有100条记录,那么exists()还是执行10000次,还不如使用in()遍历10000*100次,因为in()是在内存里遍历比较,而exists()需要查询数据库,我们都知道查询数据库所消耗的性能更高,而内存比较很快.</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/30/SQL中in和exist的区别/" rel="next" title="SQL中in和exist的区别">
+                <i class="fa fa-chevron-left"></i> SQL中in和exist的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -608,10 +474,11 @@ Array A=(select * from A)
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -619,6 +486,10 @@ Array A=(select * from A)
 
 
           
+
+  
+
+
 
         </div>
         
@@ -639,8 +510,17 @@ Array A=(select * from A)
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -703,6 +583,22 @@ Array A=(select * from A)
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-概念解释"><span class="nav-number">1.</span> <span class="nav-text">一. 概念解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-具体操作"><span class="nav-number">2.</span> <span class="nav-text">二. 具体操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三．好的使用习惯"><span class="nav-number">3.</span> <span class="nav-text">三．好的使用习惯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-附录"><span class="nav-number">4.</span> <span class="nav-text">四. 附录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -850,6 +746,10 @@ Array A=(select * from A)
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
