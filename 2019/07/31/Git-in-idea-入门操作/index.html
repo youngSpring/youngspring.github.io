@@ -86,7 +86,7 @@
 
 
 
-  <meta name="keywords" content="sql,">
+  <meta name="keywords" content="git ,idea,">
 
 
 
@@ -97,18 +97,40 @@
 
 
 
-<meta name="description" content="1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查询 SELECT *  FRO">
-<meta name="keywords" content="sql">
+<meta name="description" content="V1.0  by  youngspring    一. 概念解释 概念  本地仓库（Local）：此次修改已经被提交，处于本地机器。但是其他同事还访问不到远程仓库 (Remote)：代码在服务器上放置的位置，其他有权限的同事可以通过pull获取到带origin的就是远程的Commit:提交到本地仓库,还在你的机器上Push:将本地仓库内容提交到远程仓库，这样大家都就可以访问到了。合并代码：指的是将">
+<meta name="keywords" content="git ,idea">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL中in和exist的区别">
-<meta property="og:url" content="http://yoursite.com/2019/07/30/SQL中in和exist的区别/index.html">
+<meta property="og:title" content="Git in idea 入门操作">
+<meta property="og:url" content="http://yoursite.com/2019/07/31/Git-in-idea-入门操作/index.html">
 <meta property="og:site_name" content="youngspring">
-<meta property="og:description" content="1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查询 SELECT *  FRO">
+<meta property="og:description" content="V1.0  by  youngspring    一. 概念解释 概念  本地仓库（Local）：此次修改已经被提交，处于本地机器。但是其他同事还访问不到远程仓库 (Remote)：代码在服务器上放置的位置，其他有权限的同事可以通过pull获取到带origin的就是远程的Commit:提交到本地仓库,还在你的机器上Push:将本地仓库内容提交到远程仓库，这样大家都就可以访问到了。合并代码：指的是将">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-07-30T09:44:34.737Z">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/local_and_remote_branch.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/code_version_code.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/codeStatus.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/addFiles.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/function_of_buttons.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/structure_of_docu.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/gitIgnore.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/whoCommitCode.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/whoChangedFile.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/whichBranchTheCodeIn.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/merge.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/conflict.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/solveConfilct.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/stash1.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/stash2.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/cherry-pick.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/reset.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/push.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/noChange.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/status.png">
+<meta property="og:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/shortCut.png">
+<meta property="og:updated_time" content="2019-08-13T07:54:53.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL中in和exist的区别">
-<meta name="twitter:description" content="1. 结论  in()适合B表比A表数据小的情况 exists()适合B表比A表数据大的情况 当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.   2. 原理:1. in()select * from A where id in(select id from B) 等价于 SELECT id FROM B -----&amp;gt;先执行in中的查询 SELECT *  FRO">
+<meta name="twitter:title" content="Git in idea 入门操作">
+<meta name="twitter:description" content="V1.0  by  youngspring    一. 概念解释 概念  本地仓库（Local）：此次修改已经被提交，处于本地机器。但是其他同事还访问不到远程仓库 (Remote)：代码在服务器上放置的位置，其他有权限的同事可以通过pull获取到带origin的就是远程的Commit:提交到本地仓库,还在你的机器上Push:将本地仓库内容提交到远程仓库，这样大家都就可以访问到了。合并代码：指的是将">
+<meta name="twitter:image" content="http://picture.youngspring.cn/image/article/git_in_idea_First/local_and_remote_branch.png">
 
 
 
@@ -138,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/30/SQL中in和exist的区别/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/31/Git-in-idea-入门操作/">
 
 
 
 
 
-  <title>SQL中in和exist的区别 | youngspring</title>
+  <title>Git in idea 入门操作 | youngspring</title>
   
 
 
@@ -261,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/SQL中in和exist的区别/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/Git-in-idea-入门操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yuepeng.han">
@@ -278,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SQL中in和exist的区别</h1>
+          <h1 class="post-title" itemprop="name headline">Git in idea 入门操作</h1>
         
 
         <div class="post-meta">
@@ -290,8 +312,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-30T16:01:00+08:00">
-                2019-07-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T17:12:00+08:00">
+                2019-07-31
               </time>
             
 
@@ -301,6 +323,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -309,8 +353,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/30/SQL中in和exist的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/30/SQL中in和exist的区别/" itemprop="commentCount"></span>
+                <a href="/2019/07/31/Git-in-idea-入门操作/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/31/Git-in-idea-入门操作/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -343,70 +387,61 @@
       
 
       
-        <h3 id="1-结论"><a href="#1-结论" class="headerlink" title="1. 结论"></a>1. 结论</h3><blockquote>
-<ul>
-<li>in()适合B表比A表数据小的情况</li>
-<li>exists()适合B表比A表数据大的情况</li>
-<li>当A表数据与B表数据一样大时,in与exists效率差不多,可任选一个使用.</li>
-</ul>
-</blockquote>
-<h3 id="2-原理"><a href="#2-原理" class="headerlink" title="2. 原理:"></a>2. 原理:</h3><h4 id="1-in"><a href="#1-in" class="headerlink" title="1. in()"></a>1. in()</h4><pre><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> A <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">in</span>(<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> B)
-等价于
-<span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">FROM</span> B <span class="comment">-----&gt;先执行in中的查询</span>
-<span class="keyword">SELECT</span> *  <span class="keyword">FROM</span> A  <span class="keyword">WHERE</span> A.id = B.id</code></pre>
-<ul>
-<li>执行流程<br>以上查询使用了in语句,in()<strong>只执行一次</strong>,它@1查出B表中的所有id字段并<strong>缓存</strong>起来.之后,@2检查A表的id是否与B表中的id相等,如果相等则将A表的记录加入结果集中,直到遍历完A表的所有记录.<br>类似流程.<br>每一个A的结果,都会遍历一次B的所有数据  </li>
-</ul>
-<pre><code class="java"><span class="comment">//查询过程类似于下边的代码</span>
-List resultSet=[];
-Array A=(select * from A);
-Array B=(select id from B);
+        <center>V1.0  by  <font face="黑体" size="4">youngspring</font></center>  
 
-<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++) {
-   <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;B.length;j++) {
-      <span class="keyword">if</span>(A[i].id==B[j].id) {
-         resultSet.add(A[i]);
-         <span class="keyword">break</span>;
-      }
-   }
-}
-<span class="keyword">return</span> resultSet;  </code></pre>
-<ol>
-<li><p>A表中有100条记录，B表中有1000条记录，那么最多可能遍历100*1000次，效率很差</p>
+<h3 id="一-概念解释"><a href="#一-概念解释" class="headerlink" title="一. 概念解释"></a>一. 概念解释</h3><ol>
+<li><strong>概念</strong></li>
+</ol>
+<p><strong>本地仓库</strong>（Local）：此次修改已经被提交，处于本地机器。但是其他同事还访问不到<br><strong>远程仓库</strong> (Remote)：代码在服务器上放置的位置，其他有权限的同事可以通过pull获取到<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/local_and_remote_branch.png" alt="本地分支和远程分支"><br>带<strong>origin</strong>的就是远程的<br><strong>Commit</strong>:提交到本地仓库,还在你的机器上<br><strong>Push</strong>:将本地仓库内容提交到远程仓库，这样大家都就可以访问到了。<br><strong>合并代码</strong>：指的是将目标分支的代码合并到当前分支<br><strong>代码版本</strong>：代码状态的唯一识别码<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/code_version_code.png" alt="代码的唯一识别码"></p>
+<ol start="2">
+<li><strong>文件的几种状态</strong><br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/codeStatus.png" alt="文件的几种状态">  </li>
+</ol>
+<p><strong><font color="red">红色</font></strong>：本地文件，且未纳入到git的管理，git不会对其进行版本控制<br>这类文件加入到git管理中:<br>idea操作：<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/addFiles.png" alt="增加文件到版本控制"><br>命令行操作：<br><code>git add 未纳入管理.md</code><br><strong><font color="green">绿色</font></strong>：已经纳入到了git的版本控制，但是是新建的，远程没有对应的代码<br><strong><font color="blue">蓝色</font></strong>：被修改了的代码，待提交  </p>
+<ol start="3">
+<li><strong>各个按钮的作用</strong><br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/function_of_buttons.png" alt="各个按钮的作用"><br>回滚代码不建议轻易使用，这样会使你没有提交的工作都付之东流且不能找到。</li>
+<li><strong>文件夹结构</strong><br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/structure_of_docu.png" alt="文件夹结构"><br>.git<br>保存了这个仓库的配置内容，一般不要动<br>.gitignore<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/gitIgnore.png" alt="忽略配置文件"><br>git在进行版本管理的时候，是要知道哪些是要管理的，哪些是不要管理的，这个文件就是指明了这个。<br>这个文件是不可或缺的。  </li>
+</ol>
+<h3 id="二-具体操作"><a href="#二-具体操作" class="headerlink" title="二. 具体操作"></a>二. 具体操作</h3><ol>
+<li><strong>初级操作</strong>  <ol>
+<li>查看代码是谁提交的？<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/whoCommitCode.png" alt="谁提交的文件"></li>
+<li>查看都谁改过这个文件<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/whoChangedFile.png" alt="谁改过这个文件"></li>
+<li>看当前代码都在哪些分支<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/whichBranchTheCodeIn.png" alt="代码都在哪个分支">  </li>
+</ol>
 </li>
-<li><p>A表中有1000条记录，B表中有100条记录，那么最多可遍历1000*100此，内循环次数减少，效率大大提升</p>
-<blockquote>
-<p>看似遍历数据次数相同,但是由于遍历B的更多的是<strong>无用遍历</strong>,B结果集越大,命中率就越低,所以减少内循环次数可以提高效率  </p>
-</blockquote>
+<li><strong>复杂点的操作</strong>  <ol>
+<li>合并代码<br>先切换到当前分支(代码要合并进的分支)，pull,拉取最新代码<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/merge.png" alt="合并代码"><br>进行合并<br>远程分支的合并和当前分支的合并：<br>见名知意，合并远程分支，就是将远程服务器的代码合并到当前的分支<br>合并当前分支就是将本地仓库该分支的代码合并到当前分支<br>建议大家在不明确需求的情况下不要擅自对分支进行合并操作</li>
+</ol>
 </li>
 </ol>
-<h4 id="2-exist"><a href="#2-exist" class="headerlink" title="2. exist()"></a>2. exist()</h4><pre><code class="sql"><span class="keyword">SELECT</span>  字段 <span class="keyword">FROM</span>  <span class="keyword">table</span> <span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>（subquery）;
-<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> A <span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> B <span class="keyword">WHERE</span> B.id  = A.id);
- 等价于
-<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> A;
-<span class="keyword">SELECT</span> I <span class="keyword">FROM</span> B <span class="keyword">WHERE</span> B.id = A.id;</code></pre>
-<ul>
-<li>执行流程:<br>EXISTS()查询会执行SELECT * FROM A查询，执行A.length次，并不会将EXISTS()查询结果结果进行缓存，因为EXISTS()查询返回一个布尔值true或flase，它只在乎EXISTS()的查询中是否有记录，与具体的结果集无关。<br>EXISTS()查询是将主查询的结果集放到子查询中做验证，根据验证结果是true或false来决定主查询数据结果是否得以保存。<blockquote>
-<p>如果A的查询结果在B查询中返回了true,则保存结果集  </p>
-</blockquote>
+<p><strong>出现代码冲突的情况</strong>：<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/conflict.png" alt="出现冲突的情况"><br>不要选择Accept Theirs 或者Accept Yours  ,前者会冲掉自己的代码，后者你一提交会冲掉远程同事的代码，应该选择选择Merge<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/solveConfilct.png" alt="处理冲突"><br><strong>为什么会出现代码冲突</strong>？<br>两个不通的分支（本地、远程也算不同）在同一个文件的同一行上进行了修改操作，git不知道该选哪个  </p>
+<ol start="2">
+<li><p>暂存代码<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/stash1.png" alt="暂存1"><br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/stash2.png" alt="暂存2"><br>将改动暂时存了起来，回头再来开发  </p>
 </li>
-</ul>
-<pre><code class="java"><span class="comment">//查询过程类似于下边的代码</span>
-List resultSet=[];
-Array A=(select * from A)
-
-<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;A.length;i++) {
-   <span class="keyword">if</span>(exists(A[i].id) {    <span class="comment">//执行select 1 from B b where b.id=a.id是否有记录返回</span>
-       resultSet.add(A[i]);
-   }
-}
-<span class="keyword">return</span> resultSet;</code></pre>
-<p>每有一条A数据都会执行一次Exist()</p>
-<ol>
-<li>如:A表有10000条记录,B表有1000000条记录,那么exists()会执行10000次去判断A表中的id是否与B表中的id相等.</li>
-<li>A表有10000条记录,B表有100000000条记录,那么exists()还是执行10000次,因为它只执行A.length次,可见B表数据越多,越适合exists()发挥效果.  </li>
-<li>A表有10000条记录,B表有100条记录,那么exists()还是执行10000次,还不如使用in()遍历10000*100次,因为in()是在内存里遍历比较,而exists()需要查询数据库,我们都知道查询数据库所消耗的性能更高,而内存比较很快.</li>
+<li><p>将别的分支的代码合并进来Cherry-pick<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/cherry-pick.png" alt="cherry-pick"></p>
+<ol start="3">
+<li><strong>高级的操作</strong><br>代码回滚(谨慎操作)<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/reset.png" alt="代码回滚"><br>回滚到那个指定阶段<br>这时因为本地操作导致了本地分支落后于远程分支，所以需要强制提交<br><code>Git push -f</code><br>具体内容参见更详细的文档,<br>在我们的项目中进行回滚操作是有很大风险的，极易造成代码丢失，所以禁止进行代码强制推送操作  </li>
 </ol>
+</li>
+</ol>
+<ol start="4">
+<li><strong>常见问题</strong>：<ol>
+<li>当你代码已经提交，但是远程服务器没有，这时候你需要检查一下是不是知识提交到了本地仓库，而没有推送到远程服务器，这时，你需要<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/push.png" alt="没Push成功"><br>向远程推送一下。当推送失败时，看下远程分支是不是被锁了，没有了权限</li>
+<li>明明有了改动，但是idea却<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/noChange.png" alt="no change"><br>这时候，需要你 </li>
+<li>进行点无关紧要的改动，然后提交</li>
+<li>命令行<br><code>git status</code><br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/status.png" alt="git status"><br>看下push里边有没有东西，然后push。这种情况一般常出现在合<strong>并代码后</strong>  </li>
+</ol>
+</li>
+</ol>
+<h3 id="三．好的使用习惯"><a href="#三．好的使用习惯" class="headerlink" title="三．好的使用习惯"></a>三．好的使用习惯</h3><ol>
+<li>习惯<ol>
+<li>在push代码前先pull一下<br>这么做的原因：当你在一个文件上开发代码的时候，可能别人也在该文件上开发代码，很可能在将来合并代码的时候出现代码的冲突。当你push代码的时候，git会对比你的代码和远程（origin）服务器上的代码，如果有冲突，则会强制要求你先merge再进行提交。<br>如果你不进行pull,直接push,这次merge就相当于是你意料之外的，会很容易处理错误。当你merge错误，再提交代码之后，就会将其同事的代码覆盖掉，引发不必要的麻烦</li>
+<li>写代码前第一件事：pull代码，看看有没有其他同事提交代码</li>
+<li>下班前第一件事：push代码，将今天的工作成果提交到服务器。安全，保证的代码不会丢失（即使电脑坏了），第一时间反馈给了其他在同一分支、文件上开发的同事，让他们第一时间处理冲突，这时候因为冲突代码量小，更容易处理，即使出错代价也是最小  </li>
+</ol>
+</li>
+</ol>
+<p>2.快捷键<br> 拉取代码的快捷键设置<br>File–&gt;Settings–&gt;Keymap–&gt;Main menu–&gt;VCS–&gt;UPdate Project<br><img src="http://picture.youngspring.cn/image/article/git_in_idea_First/shortCut.png" alt="short Cut">  </p>
+<h3 id="四-附录"><a href="#四-附录" class="headerlink" title="四. 附录"></a>四. 附录</h3><p>一个很好的学习git的网站：<br><a href="https://learngitbranching.js.org/?demo" target="_blank" rel="noopener">https://learngitbranching.js.org/?demo</a></p>
 
       
     </div>
@@ -456,7 +491,9 @@ Array A=(select * from A)
       
         <div class="post-tags">
           
-            <a href="/tags/sql/" rel="tag"># sql</a>
+            <a href="/tags/git/" rel="tag"># git </a>
+          
+            <a href="/tags/idea/" rel="tag"># idea</a>
           
         </div>
       
@@ -469,15 +506,15 @@ Array A=(select * from A)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/30/SQL中in和exist的区别/" rel="next" title="SQL中in和exist的区别">
+                <i class="fa fa-chevron-left"></i> SQL中in和exist的区别
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/31/Git-in-idea-入门操作/" rel="prev" title="Git in idea 入门操作">
-                Git in idea 入门操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -622,7 +659,7 @@ Array A=(select * from A)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-结论"><span class="nav-number">1.</span> <span class="nav-text">1. 结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-原理"><span class="nav-number">2.</span> <span class="nav-text">2. 原理:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-in"><span class="nav-number">2.1.</span> <span class="nav-text">1. in()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-exist"><span class="nav-number">2.2.</span> <span class="nav-text">2. exist()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-概念解释"><span class="nav-number">1.</span> <span class="nav-text">一. 概念解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-具体操作"><span class="nav-number">2.</span> <span class="nav-text">二. 具体操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三．好的使用习惯"><span class="nav-number">3.</span> <span class="nav-text">三．好的使用习惯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-附录"><span class="nav-number">4.</span> <span class="nav-text">四. 附录</span></a></li></ol></div>
             
 
           </div>
@@ -847,9 +884,9 @@ setInterval("createtime()",250);
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/07/30/SQL中in和exist的区别/';
-          this.page.identifier = '2019/07/30/SQL中in和exist的区别/';
-          this.page.title = 'SQL中in和exist的区别';
+          this.page.url = 'http://yoursite.com/2019/07/31/Git-in-idea-入门操作/';
+          this.page.identifier = '2019/07/31/Git-in-idea-入门操作/';
+          this.page.title = 'Git in idea 入门操作';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://youngspring.disqus.com/embed.js';
